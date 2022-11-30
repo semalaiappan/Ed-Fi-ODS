@@ -2,12 +2,13 @@
   <PropertyGroup>
     <PackageId>EdFi.Security.DataAccess</PackageId>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <AssemblyName>EdFi.Security.DataAccess</AssemblyName>
+    <AssemblyName>EdFi.Security.DataAccess53</AssemblyName>
     <RootNamespace>EdFi.Security.DataAccess</RootNamespace>
     <RestorePackages>true</RestorePackages>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <Copyright>Copyright © 2020 Ed-Fi Alliance, LLC and Contributors</Copyright>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    <Product>EdFi.Security.DataAccess53</Product>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>DEBUG;TRACE</DefineConstants>
