@@ -3391,7 +3391,7 @@
 													"",
 													"pm.test(\"Should return a problem details result\", () => {",
 													"  pm.expect(pm.response.code).equal(problemDetails.status);",
-													"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data\");",
+													"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data-validation-failed\");",
 													"  pm.expect(problemDetails.detail).to.equal(\"Data validation failed. See 'validationErrors' for details.\");",
 													"});",
 													"",
@@ -3478,7 +3478,7 @@
 													"",
 													"pm.test(\"Should return a problem details result\", () => {",
 													"  pm.expect(pm.response.code).equal(problemDetails.status);",
-													"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data\");",
+													"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data-validation-failed\");",
 													"  pm.expect(problemDetails.detail).to.equal(\"Data validation failed. See 'validationErrors' for details.\");",
 													"});",
 													"",
@@ -4120,7 +4120,7 @@
 																	"",
 																	"pm.test(\"Should return a problem details result\", () => {",
 																	"  pm.expect(pm.response.code).equal(problemDetails.status);",
-																	"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data\");",
+																	"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data-validation-failed\");",
 																	"  pm.expect(problemDetails.detail).to.equal(\"Data validation failed. See 'validationErrors' for details.\");",
 																	"});",
 																	"",
@@ -4347,7 +4347,7 @@
 																	"",
 																	"pm.test(\"Should return a problem details result\", () => {",
 																	"  pm.expect(pm.response.code).equal(problemDetails.status);",
-																	"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data\");",
+																	"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data-validation-failed\");",
 																	"  pm.expect(problemDetails.detail).to.equal(\"Data validation failed. See 'validationErrors' for details.\");",
 																	"});",
 																	"",
@@ -5129,7 +5129,7 @@
 																	"",
 																	"pm.test(\"Should return a problem details result\", () => {",
 																	"  pm.expect(pm.response.code).equal(problemDetails.status);",
-																	"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data\");",
+																	"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data-validation-failed\");",
 																	"  pm.expect(problemDetails.detail).to.equal(\"Data validation failed. See 'validationErrors' for details.\");",
 																	"});",
 																	"",
@@ -5358,7 +5358,7 @@
 																	"",
 																	"pm.test(\"Should return a problem details result\", () => {",
 																	"  pm.expect(pm.response.code).equal(problemDetails.status);",
-																	"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data\");",
+																	"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data-validation-failed\");",
 																	"  pm.expect(problemDetails.detail).to.equal(\"Data validation failed. See 'validationErrors' for details.\");",
 																	"});",
 																	"",
@@ -7983,16 +7983,15 @@
 															"pm.test(\"Should return a problem details result\", () => {",
 															"  pm.expect(pm.response.code).equal(problemDetails.status);",
 															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:security:data-policy:incorrect-usage\");",
-															"  pm.expect(problemDetails.detail).to.equal(\"A data policy failure was encountered. The request was not constructed correctly for the data policy that has been applied to this data for the caller.\");",
+															"  pm.expect(problemDetails.detail).to.equal(\"A data policy failure was encountered. The request was not constructed correctly for the data policy that has been applied to this resource for the caller.\");",
 															"});",
 															"",
 															"pm.test(\"Should return error message indicating which profiles can be used with the request.\", () => {",
-															"  pm.expect(problemDetails.errors).to.contain(\"Based on profile assignments, the following profile-specific content type is required when requesting this item: 'application/vnd.ed-fi.student.test-profile-studentonly-resource-includeall.readable+json'\");",
+															"  pm.expect(problemDetails.errors).to.contain(\"Based on profile assignments, the following profile-specific content type is required when requesting this resource: 'application/vnd.ed-fi.student.test-profile-studentonly-resource-includeall.readable+json'\");",
 															"});",
 															""
 														],
-														"type": "text/javascript",
-														"packages": {}
+														"type": "text/javascript"
 													}
 												},
 												{
@@ -8001,8 +8000,7 @@
 														"exec": [
 															""
 														],
-														"type": "text/javascript",
-														"packages": {}
+														"type": "text/javascript"
 													}
 												}
 											],
@@ -8180,16 +8178,15 @@
 															"pm.test(\"Should return a problem details result\", () => {",
 															"  pm.expect(pm.response.code).equal(problemDetails.status);",
 															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:security:data-policy:incorrect-usage\");",
-															"  pm.expect(problemDetails.detail).to.equal(\"A data policy failure was encountered. The request was not constructed correctly for the data policy that has been applied to this data for the caller.\");",
+															"  pm.expect(problemDetails.detail).to.equal(\"A data policy failure was encountered. The request was not constructed correctly for the data policy that has been applied to this resource for the caller.\");",
 															"});",
 															"",
 															"pm.test(\"Should return error message indicating which profiles can be used with the request.\", () => {",
-															"  pm.expect(problemDetails.errors).to.contain(\"Based on profile assignments, one of the following profile-specific content types is required when requesting this item: 'application/vnd.ed-fi.school.test-profile-resource-child-collection-includeall.readable+json', 'application/vnd.ed-fi.school.test-profile-resource-includeall.readable+json'\");",
+															"  pm.expect(problemDetails.errors).to.contain(\"Based on profile assignments, one of the following profile-specific content types is required when requesting this resource: \\'application/vnd.ed-fi.school.test-profile-resource-child-collection-includeall.readable+json\\', \\'application/vnd.ed-fi.school.test-profile-resource-includeall.readable+json'\");",
 															"});",
 															""
 														],
-														"type": "text/javascript",
-														"packages": {}
+														"type": "text/javascript"
 													}
 												},
 												{
@@ -8198,8 +8195,7 @@
 														"exec": [
 															""
 														],
-														"type": "text/javascript",
-														"packages": {}
+														"type": "text/javascript"
 													}
 												}
 											],
@@ -8373,16 +8369,15 @@
 															"pm.test(\"Should return a problem details result\", () => {",
 															"  pm.expect(pm.response.code).equal(problemDetails.status);",
 															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:security:data-policy:incorrect-usage\");",
-															"  pm.expect(problemDetails.detail).to.equal(\"A data policy failure was encountered. The request was not constructed correctly for the data policy that has been applied to this data for the caller.\");",
+															"  pm.expect(problemDetails.detail).to.equal(\"A data policy failure was encountered. The request was not constructed correctly for the data policy that has been applied to this resource for the caller.\");",
 															"});",
 															"",
 															"pm.test(\"Should return error message indicating which profiles can be used with the request.\", () => {",
-															"  pm.expect(problemDetails.errors).to.contain(\"Based on profile assignments, the following profile-specific content type is required when requesting this item: 'application/vnd.ed-fi.student.test-profile-studentonly-resource-includeall.readable+json'\");",
+															"  pm.expect(problemDetails.errors).to.contain(\"Based on profile assignments, the following profile-specific content type is required when requesting this resource: 'application/vnd.ed-fi.student.test-profile-studentonly-resource-includeall.readable+json'\");",
 															"});",
 															""
 														],
-														"type": "text/javascript",
-														"packages": {}
+														"type": "text/javascript"
 													}
 												},
 												{
@@ -8391,8 +8386,7 @@
 														"exec": [
 															""
 														],
-														"type": "text/javascript",
-														"packages": {}
+														"type": "text/javascript"
 													}
 												}
 											],
@@ -8568,8 +8562,7 @@
 														"exec": [
 															""
 														],
-														"type": "text/javascript",
-														"packages": {}
+														"type": "text/javascript"
 													}
 												},
 												{
@@ -8585,16 +8578,15 @@
 															"pm.test(\"Should return a problem details result\", () => {",
 															"  pm.expect(pm.response.code).equal(problemDetails.status);",
 															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:security:data-policy:incorrect-usage\");",
-															"  pm.expect(problemDetails.detail).to.equal(\"A data policy failure was encountered. The request was not constructed correctly for the data policy that has been applied to this data for the caller.\");",
+															"  pm.expect(problemDetails.detail).to.equal(\"A data policy failure was encountered. The request was not constructed correctly for the data policy that has been applied to this resource for the caller.\");",
 															"});",
 															"",
 															"pm.test(\"Should return error message indicating which profiles can be used with the request.\", () => {",
-															"  pm.expect(problemDetails.errors).to.contain(\"Based on profile assignments, the following profile-specific content type is required when creating or updating this item: 'application/vnd.ed-fi.student.test-profile-studentonly-resource-includeall.writable+json'\");",
+															"  pm.expect(problemDetails.errors).to.contain(\"Based on profile assignments, the following profile-specific content type is required when creating or updating this resource: 'application/vnd.ed-fi.student.test-profile-studentonly-resource-includeall.writable+json'\");",
 															"});",
 															""
 														],
-														"type": "text/javascript",
-														"packages": {}
+														"type": "text/javascript"
 													}
 												}
 											],
@@ -8766,8 +8758,7 @@
 														"exec": [
 															""
 														],
-														"type": "text/javascript",
-														"packages": {}
+														"type": "text/javascript"
 													}
 												},
 												{
@@ -8783,16 +8774,15 @@
 															"pm.test(\"Should return a problem details result\", () => {",
 															"  pm.expect(pm.response.code).equal(problemDetails.status);",
 															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:security:data-policy:incorrect-usage\");",
-															"  pm.expect(problemDetails.detail).to.equal(\"A data policy failure was encountered. The request was not constructed correctly for the data policy that has been applied to this data for the caller.\");",
+															"  pm.expect(problemDetails.detail).to.equal(\"A data policy failure was encountered. The request was not constructed correctly for the data policy that has been applied to this resource for the caller.\");",
 															"});",
 															"",
 															"pm.test(\"Should return error message indicating which profiles can be used with the request.\", () => {",
-															"  pm.expect(problemDetails.errors).to.contain(\"Based on profile assignments, one of the following profile-specific content types is required when creating or updating this item: 'application/vnd.ed-fi.school.test-profile-resource-child-collection-includeall.writable+json', 'application/vnd.ed-fi.school.test-profile-resource-includeall.writable+json'\");",
+															"  pm.expect(problemDetails.errors).to.contain(\"Based on profile assignments, one of the following profile-specific content types is required when creating or updating this resource: 'application/vnd.ed-fi.school.test-profile-resource-child-collection-includeall.writable+json', 'application/vnd.ed-fi.school.test-profile-resource-includeall.writable+json'\");",
 															"});",
 															""
 														],
-														"type": "text/javascript",
-														"packages": {}
+														"type": "text/javascript"
 													}
 												}
 											],
@@ -8982,16 +8972,15 @@
 															"pm.test(\"Should return a problem details result\", () => {",
 															"  pm.expect(pm.response.code).equal(problemDetails.status);",
 															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:security:data-policy:incorrect-usage\");",
-															"  pm.expect(problemDetails.detail).to.equal(\"A data policy failure was encountered. The request was not constructed correctly for the data policy that has been applied to this data for the caller.\");",
+															"  pm.expect(problemDetails.detail).to.equal(\"A data policy failure was encountered. The request was not constructed correctly for the data policy that has been applied to this resource for the caller.\");",
 															"});",
 															"",
 															"pm.test(\"Should return error message indicating which profiles can be used with the request.\", () => {",
-															"  pm.expect(problemDetails.errors).to.contain(\"Based on profile assignments, one of the following profile-specific content types is required when creating or updating this item: 'application/vnd.ed-fi.school.test-profile-resource-child-collection-includeall.writable+json', 'application/vnd.ed-fi.school.test-profile-resource-includeall.writable+json'\");",
+															"  pm.expect(problemDetails.errors).to.contain(\"Based on profile assignments, one of the following profile-specific content types is required when creating or updating this resource: 'application/vnd.ed-fi.school.test-profile-resource-child-collection-includeall.writable+json', 'application/vnd.ed-fi.school.test-profile-resource-includeall.writable+json'\");",
 															"});",
 															""
 														],
-														"type": "text/javascript",
-														"packages": {}
+														"type": "text/javascript"
 													}
 												},
 												{
@@ -9000,8 +8989,7 @@
 														"exec": [
 															""
 														],
-														"type": "text/javascript",
-														"packages": {}
+														"type": "text/javascript"
 													}
 												}
 											],
@@ -14099,19 +14087,18 @@
 											"\r",
 											"pm.test(\"Should include detail that indicates there's a data policy problem.\", () => {\r",
 											"  pm.expect(problemDetails).to.deep.include({\r",
-											"    \"detail\": \"The data cannot be saved because a data policy has been applied to the request that prevents it.\",\r",
-											"    \"type\": \"urn:ed-fi:api:bad-request:data-policy\",\r",
+											"    \"detail\": \"The resource cannot be saved because a data policy has been applied to the request that prevents it.\",\r",
+											"    \"type\": \"urn:ed-fi:api:bad-request:data-policy-enforced\",\r",
 											"    \"title\": \"Data Policy Enforced\",\r",
 											"    \"status\": 400\r",
 											"  });\r",
 											"});\r",
 											"\r",
 											"pm.test(\"Should include error indicating that the profile cannot be used to create the resource item.\", () => {\r",
-											"  pm.expect(problemDetails.errors).to.contain(\"The Profile definition for 'test-profile-resource-non-creatable' excludes (or does not include) one or more required elements needed to create the data item.\");\r",
+											"  pm.expect(problemDetails.errors).to.contain(\"The Profile definition for 'test-profile-resource-non-creatable' excludes (or does not include) one or more required data elements needed to create the resource.\");\r",
 											"});"
 										],
-										"type": "text/javascript",
-										"packages": {}
+										"type": "text/javascript"
 									}
 								}
 							],
@@ -14173,19 +14160,18 @@
 											"\r",
 											"pm.test(\"Should include detail that indicates there's a data policy problem.\", () => {\r",
 											"  pm.expect(problemDetails).to.deep.include({\r",
-											"    \"detail\": \"The data cannot be saved because a data policy has been applied to the request that prevents it.\",\r",
-											"    \"type\": \"urn:ed-fi:api:bad-request:data-policy\",\r",
+											"    \"detail\": \"The resource cannot be saved because a data policy has been applied to the request that prevents it.\",\r",
+											"    \"type\": \"urn:ed-fi:api:bad-request:data-policy-enforced\",\r",
 											"    \"title\": \"Data Policy Enforced\",\r",
 											"    \"status\": 400\r",
 											"  });\r",
 											"});\r",
 											"\r",
 											"pm.test(\"Should include error indicating that the profile cannot be used to create the resource item.\", () => {\r",
-											"  pm.expect(problemDetails.errors).to.contain(\"The Profile definition for 'test-profile-resource-includes-child-collection-with-non-creatable-items' excludes (or does not include) one or more required data elements needed to create a child item of type 'EducationOrganizationInternationalAddress' in the data.\");\r",
+											"  pm.expect(problemDetails.errors).to.contain(\"The Profile definition for 'test-profile-resource-includes-child-collection-with-non-creatable-items' excludes (or does not include) one or more required data elements needed to create a child item of type 'EducationOrganizationInternationalAddress' in the resource.\");\r",
 											"});"
 										],
-										"type": "text/javascript",
-										"packages": {}
+										"type": "text/javascript"
 									}
 								}
 							],
@@ -14299,19 +14285,18 @@
 											"\r",
 											"pm.test(\"Should include detail that indicates there's a data policy problem.\", () => {\r",
 											"  pm.expect(problemDetails).to.deep.include({\r",
-											"    \"detail\": \"The data cannot be saved because a data policy has been applied to the request that prevents it.\",\r",
-											"    \"type\": \"urn:ed-fi:api:bad-request:data-policy\",\r",
+											"    \"detail\": \"The resource cannot be saved because a data policy has been applied to the request that prevents it.\",\r",
+											"    \"type\": \"urn:ed-fi:api:bad-request:data-policy-enforced\",\r",
 											"    \"title\": \"Data Policy Enforced\",\r",
 											"    \"status\": 400\r",
 											"  });\r",
 											"});\r",
 											"\r",
 											"pm.test(\"Should include error indicating that the profile cannot be used to create the resource item.\", () => {\r",
-											"  pm.expect(problemDetails.errors).to.contain(\"The Profile definition for 'test-profile-resource-includes-child-collection-with-non-creatable-items' excludes (or does not include) one or more required data elements needed to create a child item of type 'EducationOrganizationInternationalAddress' in the data.\");\r",
+											"  pm.expect(problemDetails.errors).to.contain(\"The Profile definition for 'test-profile-resource-includes-child-collection-with-non-creatable-items' excludes (or does not include) one or more required data elements needed to create a child item of type 'EducationOrganizationInternationalAddress' in the resource.\");\r",
 											"});"
 										],
-										"type": "text/javascript",
-										"packages": {}
+										"type": "text/javascript"
 									}
 								}
 							],
@@ -14368,19 +14353,18 @@
 											"\r",
 											"pm.test(\"Should include detail that indicates there's a data policy problem.\", () => {\r",
 											"  pm.expect(problemDetails).to.deep.include({\r",
-											"    \"detail\": \"The data cannot be saved because a data policy has been applied to the request that prevents it.\",\r",
-											"    \"type\": \"urn:ed-fi:api:bad-request:data-policy\",\r",
+											"    \"detail\": \"The resource cannot be saved because a data policy has been applied to the request that prevents it.\",\r",
+											"    \"type\": \"urn:ed-fi:api:bad-request:data-policy-enforced\",\r",
 											"    \"title\": \"Data Policy Enforced\",\r",
 											"    \"status\": 400\r",
 											"  });\r",
 											"});\r",
 											"\r",
 											"pm.test(\"Should include error indicating that the profile cannot be used to create the resource item.\", () => {\r",
-											"  pm.expect(problemDetails.errors).to.contain(\"The Profile definition for 'test-profile-resource-includes-child-collection-with-non-creatable-items' excludes (or does not include) one or more required data elements needed to create a child item of type 'EducationOrganizationInternationalAddress' in the data.\");\r",
+											"  pm.expect(problemDetails.errors).to.contain(\"The Profile definition for 'test-profile-resource-includes-child-collection-with-non-creatable-items' excludes (or does not include) one or more required data elements needed to create a child item of type 'EducationOrganizationInternationalAddress' in the resource.\");\r",
 											"});"
 										],
-										"type": "text/javascript",
-										"packages": {}
+										"type": "text/javascript"
 									}
 								}
 							],
@@ -14489,19 +14473,18 @@
 											"\r",
 											"pm.test(\"Should include detail that indicates there's a data policy problem.\", () => {\r",
 											"  pm.expect(problemDetails).to.deep.include({\r",
-											"    \"detail\": \"The data cannot be saved because a data policy has been applied to the request that prevents it.\",\r",
-											"    \"type\": \"urn:ed-fi:api:bad-request:data-policy\",\r",
+											"    \"detail\": \"The resource cannot be saved because a data policy has been applied to the request that prevents it.\",\r",
+											"    \"type\": \"urn:ed-fi:api:bad-request:data-policy-enforced\",\r",
 											"    \"title\": \"Data Policy Enforced\",\r",
 											"    \"status\": 400\r",
 											"  });\r",
 											"});\r",
 											"\r",
 											"pm.test(\"Should include error indicating that the profile cannot be used to create the resource item.\", () => {\r",
-											"  pm.expect(problemDetails.errors).to.contain(\"The Profile definition for 'assessment-writable-includes-non-creatable-embedded-object' excludes (or does not include) one or more required data elements needed to create a child item of type 'AssessmentContentStandard' in the data.\");\r",
+											"  pm.expect(problemDetails.errors).to.contain(\"The Profile definition for 'assessment-writable-includes-non-creatable-embedded-object' excludes (or does not include) one or more required data elements needed to create a child item of type 'AssessmentContentStandard' in the resource.\");\r",
 											"});"
 										],
-										"type": "text/javascript",
-										"packages": {}
+										"type": "text/javascript"
 									}
 								}
 							],
@@ -14605,19 +14588,18 @@
 											"\r",
 											"pm.test(\"Should include detail that indicates there's a data policy problem.\", () => {\r",
 											"  pm.expect(problemDetails).to.deep.include({\r",
-											"    \"detail\": \"The data cannot be saved because a data policy has been applied to the request that prevents it.\",\r",
-											"    \"type\": \"urn:ed-fi:api:bad-request:data-policy\",\r",
+											"    \"detail\": \"The resource cannot be saved because a data policy has been applied to the request that prevents it.\",\r",
+											"    \"type\": \"urn:ed-fi:api:bad-request:data-policy-enforced\",\r",
 											"    \"title\": \"Data Policy Enforced\",\r",
 											"    \"status\": 400\r",
 											"  });\r",
 											"});\r",
 											"\r",
 											"pm.test(\"Should include error indicating that the profile cannot be used to create the resource item.\", () => {\r",
-											"  pm.expect(problemDetails.errors).to.contain(\"The Profile definition for 'assessment-writable-includes-non-creatable-embedded-object' excludes (or does not include) one or more required data elements needed to create a child item of type 'AssessmentContentStandard' in the data.\");\r",
+											"  pm.expect(problemDetails.errors).to.contain(\"The Profile definition for 'assessment-writable-includes-non-creatable-embedded-object' excludes (or does not include) one or more required data elements needed to create a child item of type 'AssessmentContentStandard' in the resource.\");\r",
 											"});"
 										],
-										"type": "text/javascript",
-										"packages": {}
+										"type": "text/javascript"
 									}
 								}
 							],
@@ -14669,19 +14651,18 @@
 											"\r",
 											"pm.test(\"Should include detail that indicates there's a data policy problem.\", () => {\r",
 											"  pm.expect(problemDetails).to.deep.include({\r",
-											"    \"detail\": \"The data cannot be saved because a data policy has been applied to the request that prevents it.\",\r",
-											"    \"type\": \"urn:ed-fi:api:bad-request:data-policy\",\r",
+											"    \"detail\": \"The resource cannot be saved because a data policy has been applied to the request that prevents it.\",\r",
+											"    \"type\": \"urn:ed-fi:api:bad-request:data-policy-enforced\",\r",
 											"    \"title\": \"Data Policy Enforced\",\r",
 											"    \"status\": 400\r",
 											"  });\r",
 											"});\r",
 											"\r",
 											"pm.test(\"Should include error indicating that the profile cannot be used to create the resource item.\", () => {\r",
-											"  pm.expect(problemDetails.errors).to.contain(\"The Profile definition for 'assessment-writable-includes-non-creatable-embedded-object' excludes (or does not include) one or more required data elements needed to create a child item of type 'AssessmentContentStandard' in the data.\");\r",
+											"  pm.expect(problemDetails.errors).to.contain(\"The Profile definition for 'assessment-writable-includes-non-creatable-embedded-object' excludes (or does not include) one or more required data elements needed to create a child item of type 'AssessmentContentStandard' in the resource.\");\r",
 											"});"
 										],
-										"type": "text/javascript",
-										"packages": {}
+										"type": "text/javascript"
 									}
 								}
 							],

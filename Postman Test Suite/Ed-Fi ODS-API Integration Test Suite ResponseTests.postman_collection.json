@@ -870,7 +870,7 @@
 															"  const problemDetails = pm.response.json();",
 															"",
 															"  pm.expect(pm.response.code).equal(problemDetails.status);",
-															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:parameter\");",
+															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:parameter-validation\");",
 															"  pm.expect(problemDetails.detail).to.equal(\"The limit parameter was incorrect.\");",
 															"",
 															"  pm.expect(problemDetails.errors[0]).to.equal(\"Limit must be omitted or set to a value between 0 and 500.\");",
@@ -934,7 +934,7 @@
 															"  const problemDetails = pm.response.json();",
 															"",
 															"  pm.expect(pm.response.code).equal(problemDetails.status);",
-															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:parameter\");",
+															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:parameter-validation\");",
 															"  pm.expect(problemDetails.detail).to.equal(\"The limit parameter was incorrect.\");",
 															"",
 															"  pm.expect(problemDetails.errors[0]).to.equal(\"Limit must be omitted or set to a value between 0 and 500.\");",
@@ -2545,7 +2545,7 @@
 															"  const problemDetails = pm.response.json();",
 															"",
 															"  pm.expect(pm.response.code).equal(problemDetails.status);",
-															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:parameter\");",
+															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:parameter-validation\");",
 															"  pm.expect(problemDetails.detail).to.equal(\"The limit parameter was incorrect.\");",
 															"",
 															"  pm.expect(problemDetails.errors[0]).to.equal(\"Limit must be omitted or set to a value between 0 and 500.\");",
@@ -2613,7 +2613,7 @@
 															"  const problemDetails = pm.response.json();",
 															"",
 															"  pm.expect(pm.response.code).equal(problemDetails.status);",
-															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:parameter\");",
+															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:parameter-validation\");",
 															"  pm.expect(problemDetails.detail).to.equal(\"The limit parameter was incorrect.\");",
 															"",
 															"  pm.expect(problemDetails.errors[0]).to.equal(\"Limit must be omitted or set to a value between 0 and 500.\");",
@@ -3193,12 +3193,12 @@
 															"    pm.expect(pm.response.code).to.equal(404);",
 															"});",
 															"",
-															"pm.test(\"Should return a message indicating that the specified data item could not be found.\", () => {",
+															"pm.test(\"Should return a message indicating that the specified resource item could not be found.\", () => {",
 															"  const problemDetails = pm.response.json();",
 															"",
 															"  pm.expect(pm.response.code).equal(problemDetails.status);",
 															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:not-found\");",
-															"  pm.expect(problemDetails.detail).to.equal(\"The specified data item could not be found.\");",
+															"  pm.expect(problemDetails.detail).to.equal(\"The specified resource item could not be found.\");",
 															"",
 															"});"
 														],
@@ -3602,12 +3602,12 @@
 															"    pm.expect(pm.response.code).to.equal(404);\r",
 															"});\r",
 															"\r",
-															"pm.test(\"Should return a message indicating that the specified data could not be found.\", () => {\r",
+															"pm.test(\"Should return a message indicating that the specified resource could not be found.\", () => {\r",
 															"  const problemDetails = pm.response.json();\r",
 															"\r",
 															"  pm.expect(pm.response.code).equal(problemDetails.status);\r",
 															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:not-found\");\r",
-															"  pm.expect(problemDetails.detail).to.equal(\"The specified data could not be found.\");\r",
+															"  pm.expect(problemDetails.detail).to.equal(\"The specified resource could not be found.\");\r",
 															"\r",
 															"});"
 														],
@@ -4053,7 +4053,7 @@
 															"  const problemDetails = pm.response.json();",
 															"",
 															"  pm.expect(pm.response.code).equal(problemDetails.status);",
-															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data\");",
+															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data-validation-failed\");",
 															"  pm.expect(problemDetails.detail).to.equal(\"Data validation failed. See 'validationErrors' for details.\");",
 															"  pm.expect(problemDetails.validationErrors).to.deep.equal({",
 															"  \"$.lastSurname\": [",
@@ -4128,140 +4128,6 @@
 							]
 						},
 						{
-							"name": "when_posting_a_resource_with_an_invalid_content_type",
-							"item": [
-								{
-									"name": "with_an_unsupported_content_type",
-									"item": [
-										{
-											"name": "api_should_fail_with_415_code",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"exec": [
-															"pm.test(\"Status code is 415\", () => {",
-															"  pm.expect(pm.response.code).to.equal(415);",
-															"});",
-															"",
-															"pm.test(\"Should return a message indicating that the 'Content-Type' header isn't supported.\", () => {",
-															"  const problemDetails = pm.response.json();",
-															"",
-															"  pm.expect(pm.response.code).equal(problemDetails.status);",
-															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:unsupported-media-type\");",
-															"  pm.expect(problemDetails.title).to.equal(\"Unsupported Media Type\");",
-															"  pm.expect(problemDetails.detail).to.equal(\"The request construction was invalid.\");",
-															"  pm.expect(problemDetails.errors).to.contain(\"The value specified in the 'Content-Type' header is not supported by this host.\");",
-															"});",
-															""
-														],
-														"type": "text/javascript",
-														"packages": {}
-													}
-												},
-												{
-													"listen": "prerequest",
-													"script": {
-														"exec": [
-															""
-														],
-														"type": "text/javascript",
-														"packages": {}
-													}
-												}
-											],
-											"request": {
-												"method": "POST",
-												"header": [],
-												"body": {
-													"mode": "raw",
-													"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n<student>\r\n\t<studentUniqueId>123</studentUniqueId>\r\n\t<birthDate>2005-01-01</birthDate>\r\n\t<firstName>John</firstName>\r\n\t<lastSurname>Doe</lastSurname>\r\n</student>",
-													"options": {
-														"raw": {
-															"language": "xml"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{ApiBaseUrl}}/data/v3/ed-fi/students",
-													"host": [
-														"{{ApiBaseUrl}}"
-													],
-													"path": [
-														"data",
-														"v3",
-														"ed-fi",
-														"students"
-													]
-												}
-											},
-											"response": []
-										}
-									]
-								},
-								{
-									"name": "with_an_empty_content_type",
-									"item": [
-										{
-											"name": "api_should_fail_with_415_code",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"exec": [
-															"pm.test(\"Status code is 415\", () => {",
-															"  pm.expect(pm.response.code).to.equal(415);",
-															"});",
-															"",
-															"pm.test(\"Should return a message indicating that the 'Content-Type' header is missing.\", () => {",
-															"  const problemDetails = pm.response.json();",
-															"",
-															"  pm.expect(pm.response.code).equal(problemDetails.status);",
-															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:unsupported-media-type\");",
-															"  pm.expect(problemDetails.title).to.equal(\"Unsupported Media Type\");",
-															"  pm.expect(problemDetails.detail).to.equal(\"The request construction was invalid.\");",
-															"  pm.expect(problemDetails.errors).to.contain(\"The 'Content-Type' header is missing.\");",
-															"});",
-															""
-														],
-														"type": "text/javascript",
-														"packages": {}
-													}
-												},
-												{
-													"listen": "prerequest",
-													"script": {
-														"exec": [
-															""
-														],
-														"type": "text/javascript",
-														"packages": {}
-													}
-												}
-											],
-											"request": {
-												"method": "POST",
-												"header": [],
-												"url": {
-													"raw": "{{ApiBaseUrl}}/data/v3/ed-fi/students",
-													"host": [
-														"{{ApiBaseUrl}}"
-													],
-													"path": [
-														"data",
-														"v3",
-														"ed-fi",
-														"students"
-													]
-												}
-											},
-											"response": []
-										}
-									]
-								}
-							]
-						},
-						{
 							"name": "When_posting_a_resource_with_decimal_overflow",
 							"item": [
 								{
@@ -4282,7 +4148,7 @@
 															"  const problemDetails = pm.response.json();",
 															"",
 															"  pm.expect(pm.response.code).equal(problemDetails.status);",
-															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data\");",
+															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data-validation-failed\");",
 															"  pm.expect(problemDetails.detail).to.equal(\"Data validation failed. See 'validationErrors' for details.\");",
 															"",
 															"  pm.expect(problemDetails.validationErrors).to.deep.equal({",
@@ -5452,7 +5318,7 @@
 													"",
 													"pm.test(\"Should return a problem details result\", () => {",
 													"  pm.expect(pm.response.code).equal(problemDetails.status);",
-													"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data\");",
+													"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data-validation-failed\");",
 													"  pm.expect(problemDetails.detail).to.equal(\"Data validation failed. See 'validationErrors' for details.\");",
 													"});",
 													"",
@@ -5546,7 +5412,7 @@
 													"",
 													"pm.test(\"Should return a problem details result\", () => {",
 													"  pm.expect(pm.response.code).equal(problemDetails.status);",
-													"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data\");",
+													"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data-validation-failed\");",
 													"  pm.expect(problemDetails.detail).to.equal(\"Data validation failed. See 'validationErrors' for details.\");",
 													"});",
 													"",
@@ -5655,7 +5521,7 @@
 													"",
 													"pm.test(\"Should return a problem details result\", () => {",
 													"  pm.expect(pm.response.code).equal(problemDetails.status);",
-													"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data\");",
+													"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data-validation-failed\");",
 													"  pm.expect(problemDetails.detail).to.equal(\"Data validation failed. See 'validationErrors' for details.\");",
 													"});",
 													"",
@@ -5876,7 +5742,7 @@
 													"",
 													"pm.test(\"Should return a problem details result\", () => {",
 													"  pm.expect(pm.response.code).equal(problemDetails.status);",
-													"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data\");",
+													"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data-validation-failed\");",
 													"  pm.expect(problemDetails.detail).to.equal(\"Data validation failed. See 'validationErrors' for details.\");",
 													"});",
 													"",
@@ -5947,7 +5813,7 @@
 													"",
 													"pm.test(\"Should return a message indicating that the snapshot is read-only.\", () => {",
 													"  pm.expect(pm.response.code).equal(problemDetails.status);",
-													"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:snapshots:read-only\");",
+													"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:snapshots:method-not-allowed\");",
 													"  pm.expect(problemDetails.detail).to.equal(\"Snapshots are read-only.\");",
 													"  pm.expect(problemDetails.title).to.equal(\"Method Not Allowed with Snapshots\");",
 													"});",
@@ -6019,7 +5885,7 @@
 															"\r",
 															"pm.test(\"Should return a problem details result\", () => {\r",
 															"  pm.expect(pm.response.code).equal(problemDetails.status);\r",
-															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data\");\r",
+															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data-validation-failed\");\r",
 															"  pm.expect(problemDetails.detail).to.equal(\"Data validation failed. See 'validationErrors' for details.\");\r",
 															"});\r",
 															"\r",
@@ -6090,15 +5956,15 @@
 															"pm.test(\"Should return a problem details result\", () => {\r",
 															"  pm.expect(pm.response.code).equal(problemDetails.status);\r",
 															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:security:authorization\");\r",
-															"  pm.expect(problemDetails.detail).to.contain(\"Access to the data could not be authorized.\");\r",
+															"  pm.expect(problemDetails.detail).to.contain(\"Access to the resource could not be authorized.\");\r",
 															"});\r",
 															"\r",
 															"pm.test(\"Should return a message indicating that authorization was denied, staff was not found.\", () => {\r",
-															"  pm.expect(problemDetails.errors[0]).to.match(/^No relationships have been established between the caller's education organization id claim(s)? \\(([\\d\\s,]+(\\.{3})?)\\) and the data item's 'StaffUniqueId'./);\r",
+															"  pm.expect(problemDetails.errors[0]).to.match(/^No relationships have been established between the caller's education organization id claim(s)? \\(([\\d\\s,]+(\\.{3})?)\\) and the resource item's 'StaffUniqueId'./);\r",
 															"});\r",
 															"\r",
 															"pm.test(`Should hint to create 'StaffEducationOrganizationEmploymentAssociation' or 'StaffEducationOrganizationAssignmentAssociation'`, () => {\r",
-															"  pm.expect(problemDetails.detail).to.contain(\"Access to the data could not be authorized. Hint: You may need to create corresponding 'StaffEducationOrganizationEmploymentAssociation' or 'StaffEducationOrganizationAssignmentAssociation' data items.\");\r",
+															"  pm.expect(problemDetails.detail).to.contain(\"Access to the resource could not be authorized. Hint: You may need to create corresponding 'StaffEducationOrganizationEmploymentAssociation' or 'StaffEducationOrganizationAssignmentAssociation' resource items.\");\r",
 															"});\r",
 															"\r",
 															""
@@ -6159,14 +6025,14 @@
 																	"pm.test(\"Should return a problem details result\", () => {\r",
 																	"  pm.expect(pm.response.code).equal(problemDetails.status);\r",
 																	"  pm.expect(problemDetails.detail).to.equal(\"The referenced 'Student' item does not exist.\");\r",
-																	"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:conflict:unresolved-reference\");\r",
+																	"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:data-conflict:unresolved-reference\");\r",
 																	"  pm.expect(problemDetails.title).to.equal(\"Unresolved Reference\");\r",
 																	"});\r",
 																	"\r",
 																	"pm.test(\"Should return a message indicating that access was denied, student was not found.\", () => {\r",
 																	"  pm.expect(problemDetails.detail).to.equal(\"The referenced 'Student' item does not exist.\");\r",
 																	"  // NOTE: This was previously handled by a \"SecurityConflictException\" in C#, and provided an authorization related 409 message.\r",
-																	"  // Previous expected message: \"Access to the data item could not be authorized because the 'Student' was not found.\"\r",
+																	"  // Previous expected message: \"Access to the resource item could not be authorized because the 'Student' was not found.\"\r",
 																	"});\r",
 																	""
 																],
@@ -6224,7 +6090,7 @@
 																	"pm.test(\"Problem Details response indicates referenced LocalEducationAgency item does not exist.\", () => {\r",
 																	"  pm.expect(problemDetails).to.deep.include({\r",
 																	"    \"detail\": \"The referenced 'LocalEducationAgency' item does not exist.\",\r",
-																	"    \"type\": \"urn:ed-fi:api:conflict:unresolved-reference\",\r",
+																	"    \"type\": \"urn:ed-fi:api:data-conflict:unresolved-reference\",\r",
 																	"    \"title\": \"Unresolved Reference\",\r",
 																	"    \"status\": 409,\r",
 																	"  });\r",
@@ -6327,7 +6193,7 @@
 																	"pm.test(\"Problem Details response indicates referenced LocalEducationAgency item does not exist.\", () => {\r",
 																	"  pm.expect(problemDetails).to.deep.include({\r",
 																	"    \"detail\": \"The referenced 'LocalEducationAgency' item does not exist.\",\r",
-																	"    \"type\": \"urn:ed-fi:api:conflict:unresolved-reference\",\r",
+																	"    \"type\": \"urn:ed-fi:api:data-conflict:unresolved-reference\",\r",
 																	"    \"title\": \"Unresolved Reference\",\r",
 																	"    \"status\": 409,\r",
 																	"  });\r",
@@ -6456,7 +6322,7 @@
 															"  pm.expect(pm.response.code).equal(problemDetails.status);\r",
 															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:method-not-allowed\");\r",
 															"  pm.expect(problemDetails.detail).to.equal(\"The request construction was invalid.\");\r",
-															"  pm.expect(problemDetails.errors).contains(\"Data items can only be updated using PUT. To \\\"upsert\\\" an item in the resource collection using POST, remove the \\\"id\\\" from the route.\")\r",
+															"  pm.expect(problemDetails.errors).contains(\"Resource items can only be updated using PUT. To \\\"upsert\\\" an item in the resource collection using POST, remove the \\\"id\\\" from the route.\")\r",
 															"\r",
 															"});"
 														],
@@ -6513,10 +6379,10 @@
 															"  const problemDetails = pm.response.json();\r",
 															"\r",
 															"  pm.expect(pm.response.code).equal(problemDetails.status);\r",
-															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data\");\r",
+															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data-validation-failed\");\r",
 															"  pm.expect(problemDetails.title).to.equal(\"Data Validation Failed\");\r",
 															"  pm.expect(problemDetails.detail).to.equal(\"The request data was constructed incorrectly.\");\r",
-															"  pm.expect(problemDetails.errors).contains(\"Data identifiers cannot be assigned by the client. The 'id' property should not be included in the request body.\")\r",
+															"  pm.expect(problemDetails.errors).contains(\"Resource identifiers cannot be assigned by the client. The 'id' property should not be included in the request body.\")\r",
 															"});"
 														],
 														"type": "text/javascript",
@@ -6837,7 +6703,7 @@
 															"  const problemDetails = pm.response.json();",
 															"",
 															"  pm.expect(pm.response.code).equal(problemDetails.status);",
-															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data\");",
+															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data-validation-failed\");",
 															"  pm.expect(problemDetails.detail).to.equal(\"Data validation failed. See 'validationErrors' for details.\");",
 															"",
 															"  pm.expect(problemDetails.validationErrors).to.deep.equal({",
@@ -6875,142 +6741,6 @@
 													"mode": "raw",
 													"raw": "{\r\n   \"studentUniqueId\": \"{{supplied:{{scenarioId}}:studentUniqueId}}\",\r\n  \"birthDate\":\"{{supplied:{{scenarioId}}:birthDate}}\",\r\n  \"firstName\": \"{{supplied:{{scenarioId}}:firstName}}\",\r\n  \"lastSurname\": \"\"\r\n}"
 												},
-												"url": {
-													"raw": "{{ApiBaseUrl}}/data/v3/ed-fi/students/{{known:{{scenarioId}}:studentGuid}}",
-													"host": [
-														"{{ApiBaseUrl}}"
-													],
-													"path": [
-														"data",
-														"v3",
-														"ed-fi",
-														"students",
-														"{{known:{{scenarioId}}:studentGuid}}"
-													]
-												}
-											},
-											"response": []
-										}
-									]
-								}
-							]
-						},
-						{
-							"name": "when_putting_a_resource_with_an_invalid_content_type",
-							"item": [
-								{
-									"name": "with_an_unsupported_content_type",
-									"item": [
-										{
-											"name": "api_should_fail_with_415_code",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"exec": [
-															"pm.test(\"Status code is 415\", () => {",
-															"  pm.expect(pm.response.code).to.equal(415);",
-															"});",
-															"",
-															"pm.test(\"Should return a message indicating that the 'Content-Type' header isn't supported.\", () => {",
-															"  const problemDetails = pm.response.json();",
-															"",
-															"  pm.expect(pm.response.code).equal(problemDetails.status);",
-															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:unsupported-media-type\");",
-															"  pm.expect(problemDetails.title).to.equal(\"Unsupported Media Type\");",
-															"  pm.expect(problemDetails.detail).to.equal(\"The request construction was invalid.\");",
-															"  pm.expect(problemDetails.errors).to.contain(\"The value specified in the 'Content-Type' header is not supported by this host.\");",
-															"});",
-															""
-														],
-														"type": "text/javascript",
-														"packages": {}
-													}
-												},
-												{
-													"listen": "prerequest",
-													"script": {
-														"exec": [
-															""
-														],
-														"type": "text/javascript",
-														"packages": {}
-													}
-												}
-											],
-											"request": {
-												"method": "PUT",
-												"header": [],
-												"body": {
-													"mode": "raw",
-													"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n<student>\r\n\t<studentUniqueId>123</studentUniqueId>\r\n\t<birthDate>2005-01-01</birthDate>\r\n\t<firstName>John</firstName>\r\n\t<lastSurname>Doe</lastSurname>\r\n</student>",
-													"options": {
-														"raw": {
-															"language": "xml"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{ApiBaseUrl}}/data/v3/ed-fi/students/{{known:{{scenarioId}}:studentGuid}}",
-													"host": [
-														"{{ApiBaseUrl}}"
-													],
-													"path": [
-														"data",
-														"v3",
-														"ed-fi",
-														"students",
-														"{{known:{{scenarioId}}:studentGuid}}"
-													]
-												}
-											},
-											"response": []
-										}
-									]
-								},
-								{
-									"name": "with_an_empty_content_type",
-									"item": [
-										{
-											"name": "api_should_fail_with_415_code",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"exec": [
-															"pm.test(\"Status code is 415\", () => {",
-															"  pm.expect(pm.response.code).to.equal(415);",
-															"});",
-															"",
-															"pm.test(\"Should return a message indicating that the 'Content-Type' header is missing.\", () => {",
-															"  const problemDetails = pm.response.json();",
-															"",
-															"  pm.expect(pm.response.code).equal(problemDetails.status);",
-															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:unsupported-media-type\");",
-															"  pm.expect(problemDetails.title).to.equal(\"Unsupported Media Type\");",
-															"  pm.expect(problemDetails.detail).to.equal(\"The request construction was invalid.\");",
-															"  pm.expect(problemDetails.errors).to.contain(\"The 'Content-Type' header is missing.\");",
-															"});",
-															""
-														],
-														"type": "text/javascript",
-														"packages": {}
-													}
-												},
-												{
-													"listen": "prerequest",
-													"script": {
-														"exec": [
-															""
-														],
-														"type": "text/javascript",
-														"packages": {}
-													}
-												}
-											],
-											"request": {
-												"method": "PUT",
-												"header": [],
 												"url": {
 													"raw": "{{ApiBaseUrl}}/data/v3/ed-fi/students/{{known:{{scenarioId}}:studentGuid}}",
 													"host": [
@@ -7242,7 +6972,7 @@
 															"",
 															"pm.test(\"Should return a problem details result\", () => {",
 															"  pm.expect(pm.response.code).equal(problemDetails.status);",
-															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data\");",
+															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data-validation-failed\");",
 															"  pm.expect(problemDetails.detail).to.equal(\"Data validation failed. See 'validationErrors' for details.\");",
 															"});",
 															"",
@@ -7793,8 +7523,8 @@
 															"  pm.expect(problemDetails.title).to.equal(\"Optimistic Lock Failed\");",
 															"});",
 															"",
-															"pm.test(\"Should return detail indicating that data item was modified by another user.\", () => {",
-															"  pm.expect(problemDetails.detail).to.equal(\"The data item has been modified by another user.\");",
+															"pm.test(\"Should return detail indicating that Resource item was modified by another user.\", () => {",
+															"  pm.expect(problemDetails.detail).to.equal(\"The resource item has been modified by another user.\");",
 															"});",
 															""
 														],
@@ -8602,7 +8332,7 @@
 															"",
 															"pm.test(\"Should return a problem details result\", () => {",
 															"  pm.expect(pm.response.code).equal(problemDetails.status);",
-															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data\");",
+															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data-validation-failed\");",
 															"  pm.expect(problemDetails.detail).to.equal(\"Data validation failed. See 'validationErrors' for details.\");",
 															"});",
 															"",
@@ -8671,7 +8401,7 @@
 															"",
 															"pm.test(\"Should return a problem details result\", () => {",
 															"  pm.expect(pm.response.code).equal(problemDetails.status);",
-															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data\");",
+															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data-validation-failed\");",
 															"  pm.expect(problemDetails.detail).to.equal(\"Data validation failed. See 'validationErrors' for details.\");",
 															"});",
 															"",
@@ -8734,7 +8464,7 @@
 															"",
 															"pm.test(\"Should return a problem details result\", () => {",
 															"  pm.expect(pm.response.code).equal(problemDetails.status);",
-															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data\");",
+															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data-validation-failed\");",
 															"  pm.expect(problemDetails.detail).to.equal(\"Data validation failed. See 'validationErrors' for details.\");",
 															"});",
 															"",
@@ -8809,7 +8539,7 @@
 															"  pm.expect(pm.response.code).equal(problemDetails.status);\r",
 															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:method-not-allowed\");\r",
 															"  pm.expect(problemDetails.detail).to.equal(\"The request construction was invalid.\");\r",
-															"  pm.expect(problemDetails.errors).contains(\"Data collections cannot be replaced. To \\\"upsert\\\" an item in the collection, use POST. To update a specific item, use PUT and include the \\\"id\\\" in the route.\")\r",
+															"  pm.expect(problemDetails.errors).contains(\"Resource collections cannot be replaced. To \\\"upsert\\\" an item in the collection, use POST. To update a specific item, use PUT and include the \\\"id\\\" in the route.\")\r",
 															"\r",
 															"});"
 														],
@@ -8858,7 +8588,7 @@
 													"",
 													"pm.test(\"Should return a message indicating that the snapshot is read-only.\", () => {",
 													"  pm.expect(pm.response.code).equal(problemDetails.status);",
-													"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:snapshots:read-only\");",
+													"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:snapshots:method-not-allowed\");",
 													"  pm.expect(problemDetails.detail).to.equal(\"Snapshots are read-only.\");",
 													"  pm.expect(problemDetails.title).to.equal(\"Method Not Allowed with Snapshots\");",
 													"});",
@@ -9187,9 +8917,9 @@
 															"",
 															"pm.test(\"Should return a problem details result for dependent item exists\", () => {",
 															"  pm.expect(problemDetails).to.deep.include({",
-															"    \"detail\": \"The requested action cannot be performed because this data item is referenced by an existing 'StudentSchoolAssociation' data item.\",",
-															"    \"type\": \"urn:ed-fi:api:conflict:dependent-item-exists\",",
-															"    \"title\": \"Dependent Data Item Exists\",",
+															"    \"detail\": \"The requested action cannot be performed because this resource item is referenced by an existing 'StudentSchoolAssociation' resource item.\",",
+															"    \"type\": \"urn:ed-fi:api:data-conflict:dependent-item-exists\",",
+															"    \"title\": \"Dependent Resource Item Exists\",",
 															"    \"status\": 409",
 															"  });",
 															"});"
@@ -9429,7 +9159,7 @@
 															"",
 															"pm.test(\"Should return a problem details result\", () => {",
 															"  pm.expect(pm.response.code).equal(problemDetails.status);",
-															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data\");",
+															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:bad-request:data-validation-failed\");",
 															"  pm.expect(problemDetails.detail).to.equal(\"Data validation failed. See 'validationErrors' for details.\");",
 															"});",
 															"",
@@ -9793,8 +9523,8 @@
 															"  pm.expect(problemDetails.title).to.equal(\"Optimistic Lock Failed\");",
 															"});",
 															"",
-															"pm.test(\"Should return detail indicating that data item was modified by another user.\", () => {",
-															"  pm.expect(problemDetails.detail).to.equal(\"The data item has been modified by another user.\");",
+															"pm.test(\"Should return detail indicating that Resource item was modified by another user.\", () => {",
+															"  pm.expect(problemDetails.detail).to.equal(\"The resource item has been modified by another user.\");",
 															"});",
 															""
 														],
@@ -9865,7 +9595,7 @@
 															"  pm.expect(pm.response.code).equal(problemDetails.status);\r",
 															"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:method-not-allowed\");\r",
 															"  pm.expect(problemDetails.detail).to.equal(\"The request construction was invalid.\");\r",
-															"  pm.expect(problemDetails.errors).contains(\"Data collections cannot be deleted. To delete a specific item, use DELETE and include the \\\"id\\\" in the route.\")\r",
+															"  pm.expect(problemDetails.errors).contains(\"Resource collections cannot be deleted. To delete a specific item, use DELETE and include the \\\"id\\\" in the route.\")\r",
 															"\r",
 															"});"
 														],
@@ -9914,7 +9644,7 @@
 													"",
 													"pm.test(\"Should return a message indicating that the snapshot is read-only.\", () => {",
 													"  pm.expect(pm.response.code).equal(problemDetails.status);",
-													"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:snapshots:read-only\");",
+													"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:snapshots:method-not-allowed\");",
 													"  pm.expect(problemDetails.detail).to.equal(\"Snapshots are read-only.\");",
 													"  pm.expect(problemDetails.title).to.equal(\"Method Not Allowed with Snapshots\");",
 													"});",
