@@ -212,7 +212,7 @@ public class AuthorizationBasisMetadataSelectorTests
                     requestResourceClaimUris,
                     requestActionUri));
 
-            exception.Detail.ShouldContain($"Access to the data could not be authorized. You do not have permissions to perform the requested operation on the data.");
+            exception.Detail.ShouldContain($"Access to the resource could not be authorized. You do not have permissions to perform the requested operation on the data.");
             exception.Type.ShouldBe(string.Join(':', EdFiProblemDetailsExceptionBase.BaseTypePrefix, "security:authorization:access-denied:action"));
             exception.Message.ShouldContain($"The API client's assigned claim set (currently 'AssignedClaimSet') must grant permission of the '{requestActionUri}' action on one of the following data claims: 'resourceClaimUri2'.");
         }

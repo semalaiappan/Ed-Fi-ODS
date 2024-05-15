@@ -2089,7 +2089,7 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Api.Security.Authorization
             public void Should_throw_exception()
             {
                 var exception = (SecurityAuthorizationException)ActualException.ShouldBeExceptionType<SecurityAuthorizationException>();
-                exception.Detail.ShouldContain("Access to the data could not be authorized. You do not have permissions to access this data.");
+                exception.Detail.ShouldContain("Access to the resource could not be authorized. You do not have permissions to access this data.");
                 exception.Type.ShouldBe(string.Join(':', EdFiProblemDetailsExceptionBase.BaseTypePrefix, "security:authorization:access-denied:resource"));
                 exception.Message.ShouldContain($"The API client's assigned claim set (currently '{ClaimSetName}') must " +
                     $"include one of the following data claims to provide access to this data: '{SuppliedResourceAuthorizationClaim}'.");
@@ -2115,7 +2115,7 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Api.Security.Authorization
             public void Should_throw_exception_indicating_authorization_failed_for_the_requested_action()
             {
                 var exception = (SecurityAuthorizationException)ActualException.ShouldBeExceptionType<SecurityAuthorizationException>();
-                exception.Detail.ShouldContain("Access to the data could not be authorized. You do not have permissions to perform the requested operation on the data.");
+                exception.Detail.ShouldContain("Access to the resource could not be authorized. You do not have permissions to perform the requested operation on the data.");
                 exception.Type.ShouldBe(string.Join(':', EdFiProblemDetailsExceptionBase.BaseTypePrefix, "security:authorization:access-denied:action"));
                 exception.Message.ShouldContain($"The API client's assigned claim set (currently '{ClaimSetName}') must grant permission of the '{SuppliedRequestedAction}' action on one of the following data claims: '{SuppliedResourceAuthorizationClaim}'.");
             }

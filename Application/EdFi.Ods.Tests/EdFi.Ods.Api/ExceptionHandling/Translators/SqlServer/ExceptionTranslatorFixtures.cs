@@ -121,7 +121,7 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Common.ExceptionHandling
             Assert.That(
                 _actualError.Detail,
                 Is.EqualTo(
-                    "The requested action cannot be performed because this item is referenced by an existing 'DisciplineAction' item."));
+                    "The requested action cannot be performed because this resource item is referenced by an existing 'DisciplineAction' resource item."));
         }
     }
 
@@ -157,7 +157,7 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Common.ExceptionHandling
             Assert.That(
                 _actualError.Detail,
                 Is.EqualTo(
-                    "The requested action cannot be performed because this item is referenced by an existing 'CourseTranscript' item."));
+                    "The requested action cannot be performed because this resource item is referenced by an existing 'CourseTranscript' resource item."));
         }
     }
 

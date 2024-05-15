@@ -1397,7 +1397,7 @@
 									"pm.test(\"Should return a problem details result\", () => {",
 									"  pm.expect(problemDetails.status).to.equal(pm.response.code);",
 									"  pm.expect(problemDetails.type).to.equal(\"urn:ed-fi:api:security:authorization\");",
-									"  pm.expect(problemDetails.detail).to.equal(\"Access to the data could not be authorized.\");",
+									"  pm.expect(problemDetails.detail).to.equal(\"Access to the resource could not be authorized.\");",
 									"});",
 									"",
 									"pm.test(\"Should indicate authorization failure related to the SchoolId value\", () => {",
